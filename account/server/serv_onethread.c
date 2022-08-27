@@ -7,7 +7,9 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <time.h>
-#include "../includes/common.h"
+#include "../includes/serv_onethread.h"
+
+UserInfo_T g_tUser[MAXUSER];
 
 /* 创建监听socket的服务器程序入口 */
 int main(void)
@@ -75,6 +77,8 @@ int main(void)
         }
         write(iClnt_sock, &tResponse, sizeof(UserResponse_T));
         printf("handled request!\n\n");
+        memset(&tRequest, 0, sizeof(tRequest));
+        memset(&tResponse, 0, sizeof(tResponse));
     }
     close(iClnt_sock);
     close(iAccount_sock);

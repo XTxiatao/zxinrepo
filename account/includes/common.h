@@ -46,15 +46,15 @@ void useradd(char * userName, UserResponse_T *pResponse);
 void userdel(const char *userName, UserResponse_T *pResponse);
 void userquery(char *userName, UserResponse_T *pResponse);
 void * handleThread(void *args);
+void* backup(void *args);
 
 /* 创建20个线程供处理客户需求 */
-pthread_t g_dwResThread[MAXHANDLERS];
+extern pthread_t g_dwResThread[MAXHANDLERS];
 /* 创建线程来发出请求和接受回应 */
-pthread_t g_dwReqThread[MAXCLIENTS];
+extern pthread_t g_dwReqThread[MAXCLIENTS];
 /* 防止一个用户同时读/写文件 */
-pthread_rwlock_t g_tMyrwlock;
+extern pthread_rwlock_t g_tMyrwlock;
 /* 全局数据存储用户信息 */
-UserInfo_T g_tUser[MAXUSER];
-/* 定时备份用户数据 */
-void* backup(void *args);
+extern UserInfo_T g_tUser[MAXUSER];
+
 #endif

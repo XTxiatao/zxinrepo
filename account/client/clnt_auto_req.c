@@ -7,7 +7,9 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <time.h>
-#include "../includes/common.h"
+#include "../includes/clnt_auto.h"
+
+pthread_t g_dwReqThread[MAXCLIENTS];
 
 void * request(void *args)
 {
@@ -59,6 +61,7 @@ int main(int argc, char *argv[])
         printf("set tThreadAttr detachstate failed\n");
     }
     int iReqNum = MAXREQUEST;
+
     while(iReqNum > 0)
     {
         for (int i = 0; i < MAXCLIENTS; i++)

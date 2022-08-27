@@ -16,6 +16,7 @@ void * handleThread(void *args)
     socklen_t dwClnt_addr_size = sizeof(tClnt_addr);
     int iClnt_sock = accept(*(int *)args, (struct sockaddr *)&tClnt_addr, &dwClnt_addr_size);
     printf("clnt port: %hu\n", ntohs(tClnt_addr.sin_port));//打印客户端port信息（还原本来的w类型port值）
+    printf("serv_socket: %u", iClnt_sock);
     int order;
     for (order = 0; order < MAXHANDLERS; order++)
     {

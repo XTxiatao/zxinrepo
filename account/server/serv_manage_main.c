@@ -7,7 +7,12 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <time.h>
-#include "../includes/common.h"
+#include "../includes/serv_manage.h"
+
+pthread_t g_dwResThread[MAXHANDLERS];
+pthread_t g_dwReqThread[MAXCLIENTS];
+pthread_rwlock_t g_tMyrwlock;
+UserInfo_T g_tUser[MAXUSER];
 
 /* 创建监听socket的服务器程序入口 */
 int main(void)

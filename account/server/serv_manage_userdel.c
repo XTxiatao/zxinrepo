@@ -8,7 +8,6 @@
 #include <netinet/in.h>
 #include <time.h>
 #include "../includes/common.h"
-
 /* 处理用户删除请求的功能函数 */
 void userdel(const char *userName, UserResponse_T *pResponse)
 {

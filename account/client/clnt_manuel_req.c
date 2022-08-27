@@ -7,7 +7,7 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <time.h>
-#include "../includes/common.h"
+#include "../includes/clnt_manuel.h"
 
 int main(int argc, char *argv[])
 {
@@ -66,6 +66,8 @@ int main(int argc, char *argv[])
         else
         {
             printf("clnt>>>wrong order: exit clnt\n");
+            shutdown(sock, SHUT_RDWR);
+            close(sock);
             return 0;
         }
         scanf("%s", name);
